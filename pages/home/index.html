@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
+    <script src="index.js" defer></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>Christmas shop</title>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <div class="logo">
-                <div><img></div>
-                <span class="logo-title">The gifts</span><br>
-            </div>
+            <a class="logo" href="#">
+                    <div><img src="../../assets/icons/snowflake.svg" alt="snowflake" width="24" height="24"></div>
+                    <span class="logo-title">The gifts</span>
+            </a>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li class="link"><a class="paragraph-l" href="#about">Gifts</a></li>
-                    <li class="link"><a class="paragraph-l" href="#pets">About</a></li>
-                    <li class="link"><a class="paragraph-l" href="#help">Best</a></li>
-                    <li class="link"><a class="paragraph-l" href="#contacts">Contacts</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Gifts</a>
+                    </li>
+                    <li class="link">
+                        <a class="nav-link" href="#pets">About</a>
+                    </li>
+                    <li class="link">
+                        <a class="nav-link" href="#help">Best</a>
+                    </li>
+                    <li class="link">
+                        <a class="nav-link" href="#contacts">Contacts</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -29,10 +38,9 @@
             <div class="hero-section">
                 <div class="hero-section-content">
                     <p class="caption">Merry Christmas</p>
-                    <h1 class="header1">Gift yourself the magic of new possibilities</h1>
-                    <form action="submit" method="post">
-                    <button class="button-primary"><span class="action-small">Explore Magical Gifts</span></button>
-                    </form>
+                    <h1 class="hero-header">Gift yourself the magic of new possibilities</h1>
+                    <button class="button-primary" id="giftsButton"><span class="action-small">Explore Magical Gifts</span></button>
+                    <p class="caption">and Happy New Year</p>
                 </div>
             </div>
             <div class="about">
