@@ -67,4 +67,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация
   updateButtons();
+
   });
+
+  // Функция открытия модального окна
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Запрещаем прокрутку страницы
+}
+
+// Функция закрытия модального окна
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+  document.body.style.overflow = 'auto'; // Возвращаем прокрутку страницы
+}
+
+// Закрытие при клике вне модального окна
+window.onclick = function(event) {
+  if (event.target.className === 'modal') {
+      event.target.style.display = 'none';
+      document.body.style.overflow = 'auto';
+  }
+}
+
+// Закрытие по ESC
+document.onkeydown = function(evt) {
+  evt = evt || window.event;
+  if (evt.keyCode === 27) {
+      const modals = document.getElementsByClassName('modal');
+      for (let i = 0; i < modals.length; i++) {
+          modals[i].style.display = 'none';
+      }
+      document.body.style.overflow = 'auto';
+  }
+};

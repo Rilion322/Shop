@@ -82,25 +82,79 @@
             <div class="best-gifts">
                 <div class="best-gifts-content">
                     <div class="best-gifts-head">
-                        <p class="caption">Best Gifts</p>
-                        <h2 class="header-2">especially for you</h2>
+                        <p class="caption best-gifts-caption">Best Gifts</p>
+                        <h2 class="header-2 best-gifts-header">especially for you</h2>
                     </div>
                     <div class="best-gifts-list">
-                        <div class="best-gift-card">
-                            <div class="card-image"><img></div>
-                            <div class="card-text"></div>
+                        <div class="best-gift-card for-work" onclick="openModal('modal-work1')">
+                            <div class="card-image"><img src="../../assets/images/gift-for-work.png" alt="gift-for-work" width="310" height="230"></div>
+                            <div class="card-text">
+                                <span class="header-4">For work</span>
+                                <span class="header-3">Console.log.guru</span>
+                            </div>
                         </div>
-                        <div class="best-gift-card">
-                            <div class="card-image"><img></div>
-                            <div class="card-text"></div>
+                        <!--Modal-->
+                        <div id="modal-work1" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeModal('modal-work1')">&times;</span>
+                                <div class="modal-image-container">
+                                    <img src="../../assets/images/gift-for-work.png" alt="gift-for-work" width="310" height="230">
+                                </div>
+                                <div class="modal-text">
+                                    <div class="modal-header">
+                                        <span class="header-4">For work</span>
+                                        <span class="header-3">Console.log.guru</span>
+                                        <span class="paragraph">Use console log like a crystal ball to find any issue</span>
+                                    </div>
+                                    <div class="modal-stats">
+                                        <span class="header-4">Adds superpower to</span>
+                                        <ul class="modal-stats-content">
+                                            <li class="modal-stat-block">
+                                                <span class="paragraph"></span>
+                                                <span class="paragraph"></span>
+                                                <div class="modal-stars"></div>
+                                            </li>
+                                            <li class="modal-stat-block">
+                                                <span class="paragraph"></span>
+                                                <span class="paragraph"></span>
+                                                <div class="modal-stars"></div>
+                                            </li>
+                                            <li class="modal-stat-block">
+                                                <span class="paragraph"></span>
+                                                <span class="paragraph"></span>
+                                                <div class="modal-stars"></div>
+                                            </li>
+                                            <li class="modal-stat-block">
+                                                <span class="paragraph"></span>
+                                                <span class="paragraph"></span>
+                                                <div class="modal-stars"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="best-gift-card">
-                            <div class="card-image"><img></div>
-                            <div class="card-text"></div>
+                        <!---->
+                        <div class="best-gift-card for-health">
+                            <div class="card-image"><img src="../../assets/images/gift-for-health.png" alt="gift-for-health" width="310" height="230"></div>
+                            <div class="card-text">
+                                <span class="header-4">For health</span>
+                                <span class="header-3">hydration bot</span>
+                            </div>
                         </div>
-                        <div class="best-gift-card">
-                            <div class="card-image"><img></div>
-                            <div class="card-text"></div>
+                        <div class="best-gift-card for-work">
+                            <div class="card-image"><img src="../../assets/images/gift-for-work.png" alt="gift-for-harmony" width="310" height="230"></div>
+                            <div class="card-text">
+                                <span class="header-4 ">For work</span>
+                                <span class="header-3">merge master</span>
+                            </div>
+                        </div>
+                        <div class="best-gift-card for-harmony">
+                            <div class="card-image"><img src="../../assets/images/gift-for-harmony.png" alt="gift-for-work" width="310" height="230"></div>
+                            <div class="card-text">
+                                <span class="header-4">For harmony</span>
+                                <span class="header-3">spontaneous coding philosopher</span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -136,6 +136,7 @@ header{
     height: 524px;
     background: url(../../assets/images/bg-ball.png), url(../../assets/images/bg-snow.png);
     background-size: cover;
+    background-position: center;
 }
 .hero-section-content{
     display: flex;
@@ -395,22 +396,183 @@ header{
     text-transform: uppercase;
 }
 
+.best-gifts{
+    height: 554px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0px;
+    padding: 60px 8px;
+    background: url(../../assets/images/bg-snow.png);
+    margin-top: -80px;
+}
 
+.best-gifts-content{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    width: 1276px;
+    height: 434px;
+    max-width: 1276px;
+}
+.best-gifts-head{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    width: 426px;
+    height: 72px;
+    max-width: 426px;
+}
+
+.best-gifts-header{
+    color: var(--static-white);
+    margin-top: -25px;
+}
+
+.best-gifts-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    gap: 12px;
+    width: 1276px;
+    height: 342px;
+    margin-top: 35px;
+}
+
+.best-gift-card{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0px;
+    border-radius: 20px;
+    width: 310px;
+    height: 342px;
+    background: var(--content-background);
+    cursor: pointer;
+    flex-grow: 1;
+}
+.card-image{
+    width: 100%;
+}
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-text{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 20px;
+    padding: 20px;
+    width: 86%;
+    height: 112px;
+    background: var(--static-white);
+}
 
 .header-3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-family: var(--font-family);
     font-weight: 600;
-    line-height: 152%;
-    letter-spacing: 8%;
+    font-size: 16px;
+    line-height: 1.52;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: var(--dark);
 }
 
 .header-4 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-family: var(--font-family);
     font-weight: 600;
-    line-height: 130%;
-    letter-spacing: 5%;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
+}
+.for-work  .header-4{
+    color: var(--tag-purple);
+}
+.for-health .header-4{
+    color: var(--tag-green);
+}
+.for-harmony .header-4{
+    color: var(--tag-pink);
+}
+
+.best-gift-card:hover .header-3 {
+    color: var(--primary);
+}
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--content-background);
+    margin: 5% auto;
+    padding: 0;
+    max-width: 400px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: modalopen 0.3s;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 3px;
+    color: #aaa;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.close:hover {
+    color: var(--primary);
+}
+
+.modal-image-container {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+}
+
+.modal-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-text {
+    padding: 30px;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
 }
