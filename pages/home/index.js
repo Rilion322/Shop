@@ -69,10 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
   updateButtons();
 
   });
-
   // Функция открытия модального окна
 function openModal(modalId) {
-  document.getElementById(modalId).style.display = 'block';
+  document.getElementById(modalId).style.display = 'flex';
   document.body.style.overflow = 'hidden'; // Запрещаем прокрутку страницы
 }
 
@@ -84,7 +83,7 @@ function closeModal(modalId) {
 
 // Закрытие при клике вне модального окна
 window.onclick = function(event) {
-  if (event.target.className === 'modal') {
+  if (event.target.classList.contains('modal')) {
       event.target.style.display = 'none';
       document.body.style.overflow = 'auto';
   }
@@ -93,7 +92,7 @@ window.onclick = function(event) {
 // Закрытие по ESC
 document.onkeydown = function(evt) {
   evt = evt || window.event;
-  if (evt.keyCode === 27) {
+  if (evt.key === 'Escape') {
       const modals = document.getElementsByClassName('modal');
       for (let i = 0; i < modals.length; i++) {
           modals[i].style.display = 'none';
