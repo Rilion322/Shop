@@ -1,9 +1,9 @@
+const labelToImageMap = {
+    "For Work" : '../../assets/images/gift-for-work.png',
+    "For Health": '../../assets/images/gift-for-health.png',
+    "For Harmony": '../../assets/images/gift-for-harmony.png'
+  };
 document.addEventListener('DOMContentLoaded', async () => {
-    const labelToImageMap = {
-        "For Work" : '../../assets/images/gift-for-work.png',
-        "For Health": '../../assets/images/gift-for-health.png',
-        "For Harmony": '../../assets/images/gift-for-harmony.png'
-      };
     const tabsNav = document.querySelector('.gifts-tabs');
     const cardsContainer = document.querySelector('.gifts-table');
     try{
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             `).join('');
         initFilters();
+        initModals(data.cards);
         setTimeout(() => {
             document.querySelectorAll('.card').forEach(card => {
               card.classList.add('visible');
@@ -57,4 +58,93 @@ function initFilters(){
             });
         })
     })
+}
+function initModals(cards) {
+    document.querySelectorAll('.card').forEach((card, index) => {
+      card.addEventListener('click', () => {
+        console.log('Card clicked:', index);
+        const cardData = cards[index];
+        console.log('Card data:', cardData);
+        openModal(cardData);
+      });
+    });
+  }
+function openModal(cardData){
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    // Функция для обработки ESC
+    const handleEscKey = (e) => {
+        if (e.key === 'Escape') {
+        closeModal(modalOverlay);
+        }
+    };
+
+    modalOverlay.innerHTML = `
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-image-container">
+          <img src="${labelToImageMap[cardData.category]}"
+               alt="${cardData.category}"
+               width="310"
+               height="230">
+        </div>
+        <div class="modal-text">
+          <div class="modal-header ${cardData.category.toLowerCase().replace(' ', '-')}">
+            <span class="header-4">${cardData.category}</span>
+            <span class="header-3">${cardData.name}</span>
+            <span class="paragraph">${cardData.description}</span>
+          </div>
+          <div class="modal-stats">
+            <span class="header-4">Adds superpower to</span>
+            <ul class="modal-stats-content">
+              ${Object.entries(cardData.superpowers).map(([key, value]) => `
+                <li class="modal-stat-block">
+                  <div class="span-1">
+                    <span class="paragraph">${key}</span>
+                  </div>
+                  <span class="paragraph">${value}</span>
+                  <div class="modal-stars">
+                    ${generateSnowflakes(value)}
+                  </div>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modalOverlay);
+  document.addEventListener('keydown', handleEscKey);
+  modalOverlay.querySelector('.close').addEventListener('click', () => closeModal(modalOverlay));
+  modalOverlay.addEventListener('click', (e) => {
+    if(e.target === modalOverlay) closeModal(modalOverlay);
+  });
+  // Сохраняем ссылку на обработчик для последующего удаления
+  modalOverlay.handleEscKey = handleEscKey;
+}
+function generateSnowflakes(value) {
+    const numericValue = parseInt(value.replace('+', ''));
+    const filled = Math.min(Math.floor(numericValue / 100), 5);
+
+    let snowflakes = '';
+    for(let i = 0; i < 5; i++) {
+      const opacity = i < filled ? 1 : 0.2;
+      snowflakes += `
+        <div>
+          <img src="../../assets/icons/snowflake.svg"
+               alt="snowflake"
+               width="16"
+               height="16"
+               style="opacity: ${opacity};">
+        </div>
+      `;
+    }
+    return snowflakes;
+}
+function closeModal(modal) {
+    // Удаляем обработчик ESC
+    document.removeEventListener('keydown', modal.handleEscKey);
+    modal.remove();
 }
