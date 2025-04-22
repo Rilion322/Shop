@@ -52,11 +52,11 @@ header{
 .header-container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: row;
     gap: 12px;
-    padding: 12px 0px;
-    width: 1276px;
+    padding: 12px 20px;
+    width: 100%;
     height: 64px;
     max-width: 1276px;
     background: var(--static-white);
@@ -70,7 +70,8 @@ header{
     gap: 3px;
     width: 141px;
     height: 40px;
-    padding: 8px 20px;
+    padding: 8px 0;
+    margin-left: 20px;
 }
 .logo-title{
     font-family: var(--font-family);
@@ -82,16 +83,17 @@ header{
     color: var(--dark);
 }
 .nav{
-    width: 1123px;
+    width: 100%;
+    max-width: 1123px;
     height: 40px;
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: space-between;
+    flex-grow: 1;
+    justify-content: flex-end;
     gap: 0px;
 }
 .nav-list{
-    margin-left: 747px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -229,7 +231,8 @@ header{
     flex-direction: row;
     gap: 0px;
     border-radius: 20px;
-    width: 1276px;
+    width: 100%;
+    max-width: 1276px;
     height: 528px;
     max-width: 1276px;
     background: var(--static-white);
@@ -251,7 +254,7 @@ header{
     flex-direction: column;
     gap: 20px;
     padding: 60px 0px;
-    width: 426px;
+    width: 100%;
     height: 328px;
     max-width: 426px;
 }
@@ -358,14 +361,14 @@ header{
 .buttons{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end ;
     flex-direction: row;
     gap: 20px;
-    width: 1276px;
+    width: 100%;
+    max-width: 1276px;
     height: 56px;
 }
 .button-left{
-    margin-left: 1144px;
     border: 1px solid var(--static-white-40);
     width: 56px;
     height: 56px;
@@ -445,7 +448,8 @@ header{
     justify-content: center;
     flex-direction: row;
     gap: 12px;
-    width: 1276px;
+    width: 100%;
+    max-width: 1276px;
     height: 342px;
     margin-top: 35px;
 }
@@ -845,3 +849,92 @@ header{
     from {opacity: 0; transform: translateY(-50px);}
     to {opacity: 1; transform: translateY(0);}
 }
+
+.burger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  /* Стили иконки бургера */
+  .burger-line {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #333;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .burger-line::before,
+  .burger-line::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+
+  .burger-line::before {
+    top: -8px;
+  }
+
+  .burger-line::after {
+    top: 8px;
+  }
+
+
+@media screen and (max-width: 768px) {
+    .burger-btn {
+        display: block; /* Показываем бургер */
+    }
+    .nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 999;
+        transition: all 0.5s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .nav.active {
+        left: 0;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        gap: 25px;
+        padding: 0 20px;
+      }
+
+      .nav-link {
+        font-size: 18px;
+      }
+
+      /* Анимация бургера в крестик */
+      .burger-btn.active .burger-line {
+        background: transparent;
+      }
+
+      .burger-btn.active .burger-line::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      .burger-btn.active .burger-line::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+}
+@media screen and (max-width: 380px) {
+
+  }
