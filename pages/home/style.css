@@ -25,10 +25,13 @@
     src: url(../../assets/fonts/Allura-Regular.ttf), format('truetype');
     font-weight: 400;
 }
+html{
+    margin: 0;
+    padding: 0;
+}
 body{
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 .main-container{
     display: flex;
@@ -137,7 +140,8 @@ header{
     gap: 0px;
     border-radius: 20px 20px 0 0;
     padding: 60px 8px;
-    width: 1400px;
+    width: 100%;
+    max-width: 1400px;
     height: 524px;
     background: url(../../assets/images/bg-ball.png), url(../../assets/images/bg-snow.png);
     background-size: cover;
@@ -150,7 +154,7 @@ header{
     flex-direction: column;
     gap: 12px;
     padding: 60px 0px;
-    width: 426px;
+    width: 100%;
     height: 404px;
     max-width: 426px;
     margin-top: 30px;
@@ -219,8 +223,9 @@ header{
     justify-content: center;
     flex-direction: row;
     gap: 0px;
-    padding: 60px 8px;
+    padding: 60px 0px;
     width: 100%;
+    max-width: 1440px;
     height: 648px;
     background: url(../../assets/images/bg-snow.png);
 }
@@ -263,11 +268,18 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 0px;
+    flex: 1;
+    position: relative;
     border-radius: 20px;
-    width: 50%;
+    min-width: 50%;
+    overflow: hidden;
+}
+.about-santa img{
+    width: auto;
     height: 100%;
+    max-width: 638px;
+    max-height: 528px;
+    object-fit: cover;
 }
 
 .header-2 {
@@ -301,8 +313,8 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 0px;
-    padding: 60px 8px;
-    width: 98.9%;
+    padding: 60px 0px;
+    width: 100%;
     height: 488px;
     background: url(../../assets/images/bg-snow.png);
     overflow-x: hidden;
@@ -314,7 +326,7 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 20px;
-    width: 1276px;
+    width: 100%;
     height: 368px;
     max-width: 1276px;
 }
@@ -324,7 +336,7 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 12px;
-    width: 426px;
+    width: 100%;
     height: 72px;
     max-width: 426px;
 }
@@ -337,10 +349,12 @@ header{
     justify-content: center;
     flex-direction: column;
     gap: 0px;
-    width: 1276px;
+    max-width: 1276px;
+    width: 100%;
     height: 200px;
     margin-top: 40px;
 }
+/*сделать чтобы при уменьшении экрана после того как слева отступ уйдет, левая часть слайдера не пряталась за левой стороной экрана*/
 .slider{
     display: flex;
     align-items: center;
@@ -359,12 +373,14 @@ header{
     color: var(--static-white);
 }
 .buttons{
+    position: absolute;
+    right: 20px;
+    top: 1850px;
     display: flex;
     align-items: center;
-    justify-content: flex-end ;
     flex-direction: row;
     gap: 20px;
-    width: 100%;
+    width: auto;
     max-width: 1276px;
     height: 56px;
 }
@@ -403,14 +419,16 @@ header{
 }
 
 .best-gifts{
-    height: 554px;
+    min-height: 554px;
+    height: auto;
     width: 100%;
+    max-width: 1440px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     gap: 0px;
-    padding: 60px 8px;
+    padding: 60px 0px;
     background: url(../../assets/images/bg-snow.png);
     margin-top: -80px;
 }
@@ -421,9 +439,9 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 20px;
-    width: 1276px;
-    height: 434px;
+    width: 100%;
     max-width: 1276px;
+    min-height: 434px;
 }
 .best-gifts-head{
     display: flex;
@@ -431,7 +449,7 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 12px;
-    width: 426px;
+    width: 100%;
     height: 72px;
     max-width: 426px;
 }
@@ -450,7 +468,7 @@ header{
     gap: 12px;
     width: 100%;
     max-width: 1276px;
-    height: 342px;
+    min-height: 342px;
     margin-top: 35px;
 }
 
@@ -465,7 +483,6 @@ header{
     height: 342px;
     background: var(--content-background);
     cursor: pointer;
-    flex-grow: 1;
 }
 .card-image{
     width: 100%;
@@ -656,7 +673,7 @@ header{
     flex-direction: column;
     gap: 0px;
     border-radius: 0 0 20px 20px;
-    padding: 60px 8px;
+    padding: 60px 0px;
     width: 100%;
     height: 668px;
     background: url(../../assets/images/bg-forest.png), url(../../assets/images/bg-snow.png);
@@ -671,7 +688,7 @@ header{
     gap: 0px;
     border-radius: 20px;
     padding: 60px 0px;
-    width: 1276px;
+    width: 100%;
     height: 548px;
     max-width: 1276px;
 }
@@ -682,7 +699,7 @@ header{
     flex-direction: column;
     gap: 20px;
     padding: 60px 0px;
-    width: 426px;
+    width: 100%;
     height: 428px;
     max-width: 426px;
 }
@@ -696,7 +713,7 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 8px;
-    width: 426px;
+    max-width: 426px;
     height: 104px;
 }
 .cta-timer{
@@ -736,9 +753,9 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 0px;
-    padding: 60px 8px;
+    padding: 60px 0px;
     width: 100%;
-    height: 496px;
+    min-height: 496px;
     background: var(--static-white);
 }
 
@@ -748,8 +765,8 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 60px;
-    width: 1276px;
-    height: 376px;
+    width: 100%;
+    min-height: 376px;
     max-width: 1276px;
 }
 .footer-contacts{
@@ -757,10 +774,12 @@ header{
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 12px;
     border-radius: 60px;
-    width: 1276px;
-    height: 204px;
+    max-width: 1276px;
+    width: 100%;
+    min-height: 204px;
 }
 .contacts-container{
     display: flex;
@@ -770,7 +789,7 @@ header{
     gap: 12px;
     border-radius: 20px;
     padding: 20px;
-    width: 417px;
+    width: 350px;
     height: 204px;
     background: var(--content-background);
     text-decoration: none;
@@ -784,7 +803,8 @@ header{
     justify-content: flex-start;
     flex-direction: column;
     gap: 12px;
-    width: 1276px;
+    max-width: 1276px;
+    width: 100%;
     height: 112px;
 }
 .socials{
@@ -934,6 +954,8 @@ header{
         transform: rotate(-45deg);
         top: 0;
       }
+
+
 }
 @media screen and (max-width: 380px) {
 
