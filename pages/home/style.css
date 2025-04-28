@@ -226,7 +226,7 @@ header{
     padding: 60px 0px;
     width: 100%;
     max-width: 1440px;
-    height: 648px;
+    max-height: 648px;
     background: url(../../assets/images/bg-snow.png);
 }
 .about-content{
@@ -239,7 +239,6 @@ header{
     width: 100%;
     max-width: 1276px;
     height: 528px;
-    max-width: 1276px;
     background: var(--static-white);
 }
 .about-text{
@@ -910,6 +909,32 @@ header{
 
 
 @media screen and (max-width: 768px) {
+    .about{
+        max-width: 768px;
+        padding: 60px 8px;
+    }
+    .about-content{
+        max-width: 752px;
+        max-height: 529px;
+    }
+    .about-text{
+        padding: 0px 60px;
+    }
+
+    .slider-section-content{
+        margin-left: 8px;
+    }
+    .footer-contacts{
+        max-width: 752px;
+        width: 100%;
+    }
+
+    .contacts-container{
+        max-width: 752px;
+        width: 100%;
+    }
+
+
     .burger-btn {
         display: block; /* Показываем бургер */
     }
@@ -923,8 +948,10 @@ header{
         z-index: 999;
         transition: all 0.5s ease;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        margin-top: 40px;
     }
     .nav.active {
         left: 0;
@@ -958,5 +985,45 @@ header{
 
 }
 @media screen and (max-width: 380px) {
+    .about{
+        max-height: 1000px;
+        max-width: 380px;
+        width: 100%;
+        padding: 0px 8px;
+    }
+    .about-content{
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0px;
+        max-height: 880px;
+        max-width: 364px;
+        height: 100%;
+    }
+    .about-text{
+        width: 100%;
+        max-width: 340px;
+        max-height: 352px;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0px 20px;
+        gap: 0px;
+    }
+    .about-text-content{
+        gap: 0px;
+        width: 100%;
+        max-width: 324px;
+        max-height: 352px;
+    }
+    .about-santa{
+        width: 100%;
+        max-width: 380px;
+        max-height: 528px;
+        height: 100%;
+    }
 
   }
