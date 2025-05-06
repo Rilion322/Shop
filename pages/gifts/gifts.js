@@ -148,3 +148,25 @@ function closeModal(modal) {
     document.removeEventListener('keydown', modal.handleEscKey);
     modal.remove();
 }
+// Бургер меню
+const burgerBtn = document.querySelector('.burger-btn');
+const nav = document.querySelector('.nav');
+burgerBtn.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  burgerBtn.classList.toggle('active');
+})
+// Закрытие при клике вне меню
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target) && !burgerBtn.contains(e.target)) {
+    nav.classList.remove('active');
+    burgerBtn.classList.remove('active');
+  }
+});
+
+// Закрытие при клике на ссылку
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+    burgerBtn.classList.remove('active');
+  });
+});
