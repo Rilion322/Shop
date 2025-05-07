@@ -6,6 +6,11 @@
     <link href="style.css" rel="stylesheet">
     <script src="index.js" defer></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- Основной favicon -->
+    <link rel="icon" href="../../assets/icons/favicon.ico" type="image/x-icon">
+    <!-- Альтернативные размеры (PNG) -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <title>Christmas shop</title>
 </head>
 <body>
@@ -21,13 +26,13 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">Gifts</a>
+                        <a class="nav-link" href="../gifts/gifts.html">Gifts</a>
                     </li>
                     <li class="link">
-                        <a class="nav-link" href="#pets">About</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="link">
-                        <a class="nav-link" href="#help">Best</a>
+                        <a class="nav-link" href="#best">Best</a>
                     </li>
                     <li class="link">
                         <a class="nav-link" href="#contacts">Contacts</a>
@@ -46,7 +51,7 @@
                     <p class="caption">and Happy New Year</p>
                 </div>
             </div>
-            <div class="about">
+            <div class="about" id="about">
                 <div class="about-content">
                     <div class="about-text">
                         <div class="about-text-content">
@@ -71,7 +76,7 @@
                             <div class="slide slider-text">Create</div>
                             <div class="slide"><img src="../../assets/images/christmas-trees.png" alt="christmas-tree" width="200" height="200"></div>
                             <div class="slide slider-text">Love</div>
-                            <div clsaa="slide"><img src="../../assets/images/christmas-tree-ball.png" alt="christmas-tree-ball" width="200" height="200"></div>
+                            <div class="slide"><img src="../../assets/images/christmas-tree-ball.png" alt="christmas-tree-ball" width="200" height="200"></div>
                             <div class="slide slider-text">Dream</div>
                             <div class="slide"><img src="../../assets/images/fairytale-house.png" alt="fairytale-house" width="200" height="200"></div>
                         </div>
@@ -82,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="best-gifts">
+            <div class="best-gifts" id="best">
                 <div class="best-gifts-content">
                     <div class="best-gifts-head">
                         <p class="caption best-gifts-caption">Best Gifts</p>
@@ -190,7 +195,7 @@
                 <div class="cta-container">
                     <div class="cta-content">
                         <span class="header-2 cta-head">Ready to start your journey to a better version of yourself?</span>
-                        <button class="button-primary"><span class="action-small">Explore Magical Gifts</span></button>
+                        <a href="../gifts/gifts.html"><button class="button-primary"><span class="action-small">Explore Magical Gifts</span></button></a>
                         <div class="cta-timer-content">
                             <p class="caption">The New Year is Coming Soon...</p>
                             <div class="cta-timer">

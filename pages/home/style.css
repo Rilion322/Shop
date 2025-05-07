@@ -29,10 +29,14 @@ html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 body{
     margin: 0;
     padding: 0;
+}
+a{
+    text-decoration: none;
 }
 .main-container{
     display: flex;
@@ -129,10 +133,6 @@ header{
     text-transform: uppercase;
     color: var(--dark);
 }
-.nav-link:hover {
-    color: #FF5733; /* Цвет текста при ховере */
-    background-color: #F8F8F8; /* Цвет фона при ховере */
-}
 
 .hero-section{
     display: flex;
@@ -204,10 +204,7 @@ header{
     background: var(--dark);
     color: var(--static-white);
 }
-.button-primary:hover {
-    background: var(--static-white);
-    color: var(--dark);
-}
+
 .action-small {
     font-family: var(--font-family);
     font-weight: 600;
@@ -534,9 +531,7 @@ header{
     color: var(--tag-pink);
 }
 
-.best-gift-card:hover .header-3 {
-    color: var(--primary);
-}
+
 /* Стили для модального окна */
 .modal {
     display: none;
@@ -579,10 +574,6 @@ header{
     font-weight: bold;
     cursor: pointer;
     z-index: 10;
-}
-
-.close:hover {
-    color: var(--primary);
 }
 
 .modal-image-container {
@@ -794,9 +785,7 @@ header{
     background: var(--content-background);
     text-decoration: none;
 }
-.contacts-container:hover .action-large,.contacts-container:hover .header-3{
-    color: var(--primary);
-}
+
 .footer-other{
     display: flex;
     align-items: center;
@@ -854,16 +843,12 @@ header{
 .x-mask{
     mask: url(../../assets/icons/X.svg);
 }
-.mask:hover{
-    background-color: var(--primary);
-}
+
 .rs{
     color:var(--dark);
     text-decoration: none;
 }
-.rs:hover{
-    color:var(--primary);
-}
+
 
 @keyframes modalopen {
     from {opacity: 0; transform: translateY(-50px);}
@@ -908,7 +893,33 @@ header{
     top: 8px;
   }
 
+@media (hover: hover) and (pointer: fine) {
+    .nav-link:hover {
+        color: #FF5733; /* Цвет текста при ховере */
+        background-color: #F8F8F8; /* Цвет фона при ховере */
+    }
+    .button-primary:hover {
+        background: var(--static-white);
+        color: var(--dark);
+        cursor: pointer;
+    }
+    .best-gift-card:hover .header-3 {
+        color: var(--primary);
+    }
+    .close:hover {
+        color: var(--primary);
+    }
+    .contacts-container:hover .action-large,.contacts-container:hover .header-3{
+        color: var(--primary);
+    }
+    .mask:hover{
+        background-color: var(--primary);
+    }
+    .rs:hover{
+        color:var(--primary);
+    }
 
+}
 @media screen and (max-width: 768px) {
     .about{
         max-width: 768px;
