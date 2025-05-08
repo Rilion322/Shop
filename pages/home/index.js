@@ -67,8 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация
   updateButtons();
-
-  });
+});
   // Функция открытия модального окна
 function openModal(modalId) {
   document.getElementById(modalId).style.display = 'flex';
@@ -123,15 +122,23 @@ updateTimer(); // Первоначальный вызов
 // Бургер меню
 const burgerBtn = document.querySelector('.burger-btn');
 const nav = document.querySelector('.nav');
+const body = document.body;
+
 burgerBtn.addEventListener('click', () => {
-  nav.classList.toggle('active');
+  const isActive = nav.classList.toggle('active');
   burgerBtn.classList.toggle('active');
-})
+  body.classList.toggle('no-scroll', isActive); // Блокировка скролла
+});
+
 // Закрытие при клике вне меню
 document.addEventListener('click', (e) => {
-  if (!nav.contains(e.target) && !burgerBtn.contains(e.target)) {
+  if (nav.classList.contains('active') &&
+      !nav.contains(e.target) &&
+      !burgerBtn.contains(e.target)) {
+
     nav.classList.remove('active');
     burgerBtn.classList.remove('active');
+    body.classList.remove('no-scroll'); // Разблокировка
   }
 });
 
@@ -140,5 +147,15 @@ document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     nav.classList.remove('active');
     burgerBtn.classList.remove('active');
+    body.classList.remove('no-scroll'); // Разблокировка
   });
+});
+
+// Закрытие по Esc (добавлено для полноты функционала)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && nav.classList.contains('active')) {
+    nav.classList.remove('active');
+    burgerBtn.classList.remove('active');
+    body.classList.remove('no-scroll'); // Разблокировка
+  }
 });

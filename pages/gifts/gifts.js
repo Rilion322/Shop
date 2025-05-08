@@ -151,15 +151,23 @@ function closeModal(modal) {
 // Бургер меню
 const burgerBtn = document.querySelector('.burger-btn');
 const nav = document.querySelector('.nav');
+const body = document.body;
+
 burgerBtn.addEventListener('click', () => {
-  nav.classList.toggle('active');
+  const isActive = nav.classList.toggle('active');
   burgerBtn.classList.toggle('active');
-})
+  body.classList.toggle('no-scroll', isActive); // Блокировка скролла
+});
+
 // Закрытие при клике вне меню
 document.addEventListener('click', (e) => {
-  if (!nav.contains(e.target) && !burgerBtn.contains(e.target)) {
+  if (nav.classList.contains('active') &&
+      !nav.contains(e.target) &&
+      !burgerBtn.contains(e.target)) {
+
     nav.classList.remove('active');
     burgerBtn.classList.remove('active');
+    body.classList.remove('no-scroll'); // Разблокировка
   }
 });
 
@@ -168,5 +176,43 @@ document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     nav.classList.remove('active');
     burgerBtn.classList.remove('active');
+    body.classList.remove('no-scroll'); // Разблокировка
   });
 });
+
+// Закрытие по Esc (добавлено для полноты функционала)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && nav.classList.contains('active')) {
+    nav.classList.remove('active');
+    burgerBtn.classList.remove('active');
+    body.classList.remove('no-scroll'); // Разблокировка
+  }
+});
+// Скролл ту топ кнопка
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+function updateButtonVisibility() {
+  const isMobile = window.innerWidth <= 768;
+  const scrolledEnough = window.scrollY > 300;
+
+  if (isMobile && scrolledEnough) {
+    scrollToTopBtn.classList.add('show');
+  } else {
+    scrollToTopBtn.classList.remove('show');
+  }
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Обработчики событий
+window.addEventListener('scroll', updateButtonVisibility);
+window.addEventListener('resize', updateButtonVisibility);
+scrollToTopBtn.addEventListener('click', scrollToTop);
+
+// Инициализация при загрузке
+updateButtonVisibility();
