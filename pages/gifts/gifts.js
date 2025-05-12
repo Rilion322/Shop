@@ -59,6 +59,7 @@ function initFilters(){
         })
     })
 }
+const body = document.body;
 function initModals(cards) {
     document.querySelectorAll('.card').forEach((card, index) => {
       card.addEventListener('click', () => {
@@ -72,6 +73,7 @@ function initModals(cards) {
 function openModal(cardData){
     const modalOverlay = document.createElement('div');
     modalOverlay.className = 'modal-overlay';
+
     // Функция для обработки ESC
     const handleEscKey = (e) => {
         if (e.key === 'Escape') {
@@ -116,6 +118,7 @@ function openModal(cardData){
     </div>
   `;
   document.body.appendChild(modalOverlay);
+  body.classList.toggle('no-scroll'); // Блокировка скролла
   document.addEventListener('keydown', handleEscKey);
   modalOverlay.querySelector('.close').addEventListener('click', () => closeModal(modalOverlay));
   modalOverlay.addEventListener('click', (e) => {
@@ -146,12 +149,12 @@ function generateSnowflakes(value) {
 function closeModal(modal) {
     // Удаляем обработчик ESC
     document.removeEventListener('keydown', modal.handleEscKey);
+    body.classList.remove('no-scroll'); // Разблокировка
     modal.remove();
 }
 // Бургер меню
 const burgerBtn = document.querySelector('.burger-btn');
 const nav = document.querySelector('.nav');
-const body = document.body;
 
 burgerBtn.addEventListener('click', () => {
   const isActive = nav.classList.toggle('active');

@@ -1,4 +1,144 @@
-document.addEventListener('DOMContentLoaded', function() {
+const labelToImageMap = {
+  "For Work" : '../../assets/images/gift-for-work.png',
+  "For Health": '../../assets/images/gift-for-health.png',
+  "For Harmony": '../../assets/images/gift-for-harmony.png'
+};
+function getRandomElements(array, count = 4) {
+  if (!Array.isArray(array)) {
+    console.error("Некорректные данные: ожидался массив");
+    return [];
+  }
+  const shuffled = [...array].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+// Функция рендеринга карточек
+function renderGifts(cards) {
+ const container = document.querySelector('.best-gifts-list');
+ container.innerHTML = cards.map(card => `
+    <div class="card" data-label="${card.category}">
+       <div class="card-image"><img src="${labelToImageMap[card.category]}" alt="gift-${card.category}" width="310" height="230"></div>
+         <div class="card-text">
+           <span class="header-4">${card.category}</span>
+           <span class="header-3">${card.name}</span>
+         </div>
+       </div>
+       `).join('');
+}
+
+const body = document.body;
+function initModals(cards) {
+   document.querySelectorAll('.card').forEach((card, index) => {
+     card.addEventListener('click', () => {
+       console.log('Card clicked:', index);
+       const cardData = cards[index];
+       console.log('Card data:', cardData);
+       openModal(cardData);
+     });
+   });
+ }
+ let scrollPosition = 0;
+ function openModal(cardData){
+   const modalOverlay = document.createElement('div');
+   modalOverlay.className = 'modal-overlay';
+   scrollPosition = window.pageYOffset;
+   document.body.style.top = `-${scrollPosition}px`;
+   // Функция для обработки ESC
+   const handleEscKey = (e) => {
+       if (e.key === 'Escape') {
+       closeModal(modalOverlay);
+       }
+   };
+
+   modalOverlay.innerHTML = `
+   <div class="modal">
+     <div class="modal-content">
+       <span class="close">&times;</span>
+       <div class="modal-image-container">
+         <img src="${labelToImageMap[cardData.category]}"
+              alt="${cardData.category}"
+              width="310"
+              height="230">
+       </div>
+       <div class="modal-text">
+         <div class="modal-header ${cardData.category.toLowerCase().replace(' ', '-')}">
+           <span class="header-4">${cardData.category}</span>
+           <span class="header-3">${cardData.name}</span>
+           <span class="paragraph">${cardData.description}</span>
+         </div>
+         <div class="modal-stats">
+           <span class="header-4">Adds superpower to</span>
+           <ul class="modal-stats-content">
+             ${Object.entries(cardData.superpowers).map(([key, value]) => `
+               <li class="modal-stat-block">
+                 <div class="span-1">
+                   <span class="paragraph">${key}</span>
+                 </div>
+                 <span class="paragraph">${value}</span>
+                 <div class="modal-stars">
+                   ${generateSnowflakes(value)}
+                 </div>
+               </li>
+             `).join('')}
+           </ul>
+         </div>
+       </div>
+     </div>
+   </div>
+ `;
+ document.body.appendChild(modalOverlay);
+ body.classList.toggle('no-scroll'); // Блокировка скролла
+ document.addEventListener('keydown', handleEscKey);
+ modalOverlay.querySelector('.close').addEventListener('click', () => closeModal(modalOverlay));
+ modalOverlay.addEventListener('click', (e) => {
+   if(e.target === modalOverlay) closeModal(modalOverlay);
+ });
+ // Сохраняем ссылку на обработчик для последующего удаления
+ modalOverlay.handleEscKey = handleEscKey;
+}
+function generateSnowflakes(value) {
+ const numericValue = parseInt(value.replace('+', ''));
+ const filled = Math.min(Math.floor(numericValue / 100), 5);
+
+ let snowflakes = '';
+ for(let i = 0; i < 5; i++) {
+   const opacity = i < filled ? 1 : 0.2;
+   snowflakes += `
+     <div>
+       <img src="../../assets/icons/snowflake.svg"
+            alt="snowflake"
+            width="16"
+            height="16"
+            style="opacity: ${opacity};">
+     </div>
+   `;
+ }
+ return snowflakes;
+}
+function closeModal(modal) {
+ // Удаляем обработчик ESC
+ document.removeEventListener('keydown', modal.handleEscKey);
+ body.classList.remove('no-scroll'); // Разблокировка
+ document.body.style.top = '';
+ modal.remove();
+ window.scrollTo({
+    top: scrollPosition,
+    behavior: 'instant' // Переопределяем глобальный smooth
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async() => {
+  try{
+    const response = await fetch('../gifts/gifts.json');
+    if(!response.ok) throw new Error('error to load');
+    const data = await response.json();
+    const randomCards = getRandomElements(data.cards, 4);
+    renderGifts(randomCards);
+    initModals(randomCards);
+  }
+  catch (error){
+    console.error('Error to load', error);
+  }
+
     document.getElementById('giftsButton').addEventListener('click', function() {
 
         // Анимация
@@ -12,6 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
           window.location.href = '../gifts/gifts.html';
         }, 1000);
   });
+
+  // Функция для выбора случайных элементов
 
   const slider = document.querySelector('.slider');
   const slides = document.querySelectorAll('.slide');
@@ -68,37 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Инициализация
   updateButtons();
 });
-  // Функция открытия модального окна
-function openModal(modalId) {
-  document.getElementById(modalId).style.display = 'flex';
-  document.body.style.overflow = 'hidden'; // Запрещаем прокрутку страницы
-}
 
-// Функция закрытия модального окна
-function closeModal(modalId) {
-  document.getElementById(modalId).style.display = 'none';
-  document.body.style.overflow = 'auto'; // Возвращаем прокрутку страницы
-}
-
-// Закрытие при клике вне модального окна
-window.onclick = function(event) {
-  if (event.target.classList.contains('modal')) {
-      event.target.style.display = 'none';
-      document.body.style.overflow = 'auto';
-  }
-}
-
-// Закрытие по ESC
-document.onkeydown = function(evt) {
-  evt = evt || window.event;
-  if (evt.key === 'Escape') {
-      const modals = document.getElementsByClassName('modal');
-      for (let i = 0; i < modals.length; i++) {
-          modals[i].style.display = 'none';
-      }
-      document.body.style.overflow = 'auto';
-  }
-};
 
 // Начальная целевая дата (пример: 31 декабря 2025, 23:59:59)
 let endDate = new Date(2025, 11, 31, 23, 59, 59);
@@ -122,7 +234,6 @@ updateTimer(); // Первоначальный вызов
 // Бургер меню
 const burgerBtn = document.querySelector('.burger-btn');
 const nav = document.querySelector('.nav');
-const body = document.body;
 
 burgerBtn.addEventListener('click', () => {
   const isActive = nav.classList.toggle('active');

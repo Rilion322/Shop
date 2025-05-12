@@ -462,7 +462,7 @@ header{
     margin-top: 35px;
 }
 
-.best-gift-card{
+.card{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -474,15 +474,6 @@ header{
     background: var(--content-background);
     cursor: pointer;
 }
-.card-image{
-    width: 100%;
-}
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .card-text{
     display: flex;
     align-items: flex-start;
@@ -495,6 +486,16 @@ header{
     height: 112px;
     background: var(--static-white);
 }
+/* Цвета категорий */
+.card[data-label="For Work"] .header-4 {
+    color:var(--tag-purple);
+  }
+.card[data-label="For Health"] .header-4 {
+    color: var(--tag-green);
+  }
+.card[data-label="For Harmony"] .header-4 {
+    color: var(--tag-pink);
+  }
 
 .header-3 {
     font-family: var(--font-family);
@@ -513,141 +514,6 @@ header{
     line-height: 1.3;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-}
-.for-work  .header-4{
-    color: var(--tag-purple);
-}
-.for-health .header-4{
-    color: var(--tag-green);
-}
-.for-harmony .header-4{
-    color: var(--tag-pink);
-}
-
-
-/* Стили для модального окна */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow: auto;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0px;
-    background-color: var(--content-background);
-    margin: 5% auto;
-    padding: 0;
-    max-width: 400px;
-    width: 80%;
-    border-radius: 20px;
-    height: 514px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: modalopen 0.3s;
-}
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 3px;
-    color: #aaa;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.modal-image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0px;
-    width: 100%;
-    height: 230px;
-    overflow: hidden;
-}
-
-.modal-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.modal-text {
-    padding: 30px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 20px;
-    border-radius: 20px;
-    padding: 20px;
-    width: 90%;
-    height: 284px;
-    background: var(--static-white);
-}
-
-.modal-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 8px;
-    width: 360px;
-    height: 104px;
-}
-.modal-stats{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 8px;
-    width: 360px;
-    height: 120px;
-}
-.modal-stats-content{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 0px;
-    width: 360px;
-    height: 96px;
-}
-.modal-stat-block{
-    margin-left: -40px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 12px;
-    width: 360px;
-    height: 24px;
-}
-.span-1{
-    width: 150px;
-}
-.modal-stars{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 8px;
-    width: 112px;
-    height: 16px;
 }
 
 .cta{
@@ -842,6 +708,128 @@ header{
     text-decoration: none;
 }
 
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
+    background-color: var(--content-background);
+    margin: 5% auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 0px;
+    border-radius: 20px;
+    height: 514px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: modalopen 0.3s;
+}
+.close{
+    position: absolute;
+    right: 20px;
+    top: 3px;
+    color: #aaa;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+.close:hover{
+    color: var(--primary);
+}
+.modal-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+}
+
+.modal-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-text {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    height: 284px;
+    background: var(--static-white);
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 360px;
+    height: 104px;
+}
+.modal-stats{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 360px;
+    height: 120px;
+}
+.modal-stats-content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0px;
+    max-width: 360px;
+    height: 96px;
+}
+.modal-stat-block{
+    margin-left: -40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 12px;
+    width: 360px;
+    height: 24px;
+}
+.span-1{
+    width: 150px;
+}
+.modal-stars{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+    width: 112px;
+    height: 16px;
+}
 
 @keyframes modalopen {
     from {opacity: 0; transform: translateY(-50px);}
