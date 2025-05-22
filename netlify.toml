@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/assets/*"
+to = "/../assets/:splat"
+status = 200
+force = true
